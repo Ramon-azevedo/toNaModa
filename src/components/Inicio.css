@@ -63,8 +63,9 @@
 }
 
 .section1 {
+    margin-bottom: 150px;
     ul {
-        
+        margin-top: 30px;
     }
 }
 
@@ -75,10 +76,46 @@
 }
 
 .section2 {
+    h2 {
+        padding-bottom: 20px;
+    }
+    margin-bottom: 200px;
     text-align: center;
     ul {
        display: flex; 
     }
+}
+
+.boxImg1 {
+
+    ul {
+        display: flex;
+        gap: 7%;
+        font-size: 0.8em;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+
+    }
+    
+}
+
+.carrosel2 {
+    .ibagems {
+        width: 80%;
+        height: 400px;
+        object-fit: cover;
+    }
+}
+
+.imgLong {
+    background-image: url('https://lookcompleto.com.br/wp-content/uploads/2023/09/modelo-morena-bronzeada-vestindo-shorts-bege-de-linho-bolsa-caramelo-camisa-branca-e-acessorios-dourados-caminhando-pelas-ruas-de-paris-1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 800px;
+    margin-top: 40px;
+    margin-bottom: 190px;
 }
 
 
@@ -88,7 +125,36 @@
 
 
 .fim {
-    background-color: black;
-    height: 300px;
+    background-color: rgb(255, 0, 162);
+    height: 310px;
     color: white;
+    margin-bottom: 200px;
+    padding-top: 80px;
+
+    .divs {
+        display: flex;
+        gap: 20%;
+        align-items: center;
+        justify-content: center;
+        div {
+            ul {
+                list-style: none;
+            }
+        }
+    }
+}
+
+.fimFooter {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 100px;
+    margin-top: 90px;
+
+    ul {
+        display: flex;
+        list-style: none;
+    }
 }
