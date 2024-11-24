@@ -13,6 +13,13 @@ function Inicio() {
         { id: '4', image: 'https://images.pexels.com/photos/1488463/pexels-photo-1488463.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'}
     ]
 
+    const data2 = [
+        { id: '1', image: 'https://images.tcdn.com.br/img/img_prod/873120/kit_2_calcas_cargo_masculina_sem_punho_escolha_as_cores_1793_1_82b11e478bec9c3d9963adea7c5b9a82.jpg'},
+        { id: '2', image: 'https://images.tcdn.com.br/img/img_prod/873120/kit_2_calcas_cargo_masculina_com_punho_escolha_as_cores_1581_1_a04b8bd0f2b58663e5297a44f60cd1dc.jpg'},
+        { id: '3', image: 'https://lojabluk.vteximg.com.br/arquivos/ids/166490-800-1000/calca-jeans-skinny-com-botoes-na-perna-azul-cj82980621-01.jpg?v=637727787998500000'},
+        { id: '4', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJXGMJV7Nz34uy7dqTW1jmmu52Yn-FYaWUqQ&s'}
+    ]
+
 
 
 
@@ -106,6 +113,7 @@ function Inicio() {
                     <Swiper
                         slidesPerView={1}
                         pagination={{clickable: true}}
+                        autoplay={{delay:5000}}
                     >
                         { data.map((item) => (
                             <SwiperSlide key={item.id}>
@@ -118,29 +126,82 @@ function Inicio() {
                         ))}
                     </Swiper>
                 </div>
-                <div>
-                    <ul>
-                        <li><div></div></li>
-                        <li><div></div></li>
-                        <li><div></div></li>
-                    </ul>
-                </div>
+            <div className="boxImg1">
+                <ul>
+                    <li>Frete Grátis acima de R$250</li>
+                    <li>Aceitamos todos os Cartões</li>
+                    <li>Contato</li>
+                    <li>Compra segura</li>
+                </ul>
+            </div>
             </section>
-
+                    
             <section className="section2">
                 <h2>Promoções Imperdíveis!</h2>
-                <div>
-                    <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
+                
+                <div className="carrosel2">
+                    <Swiper
+                        slidesPerView={2}
+                        pagination={{clickable: true}}
+                    
+                    >
+                        {data2.map((item2) => (
+                            <SwiperSlide key={item2.id}>
+                                <img
+                                    src={item2.image}
+                                    alt="Modas"
+                                    className="ibagems"
+                                />
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
                 </div>
             </section>
-            <footer className="fim">
-                <div>
+            <section className="imgLong">
 
+            </section>
+            <footer className="fim">
+                <div className="divs">
+                    <div>
+                        <ul>
+                            <li>INSTITUCIONAL</li>
+                            <li>Receba novidades</li>
+                            <li>Prazos e Formas de Entrega</li>
+                            <li>Quem somos</li>
+                            <li>Formas de Pagamento</li>
+                            <li>Trocas e Devoluções</li>
+                            <li>Nosso Whatsapp</li>
+                            <li>Nossa Loja</li>
+                            <li>Funcioamento</li>
+                            <li>Política e Privacidade</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+                            <li>ATENDIMENTO</li>
+                            <li>email@gmail.com</li>
+                            <li>Fale conosco
+                                (86) 999898-7878
+                            </li>
+                        </ul>
+
+                        <ul>
+                            <li>REDES SOCIAIS</li>
+                            <li>Inst\g</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div className="fimFooter">
+                    <h4>DESENVOLVIMENTO RMDEV</h4>
+
+                    <h4>FORMAS DE PAGAMENTO</h4>
+                    <ul>
+                        <li><img src="" alt="" /></li>
+                        <li><img src="" alt="" /></li>
+                        <li><img src="" alt="" /></li>
+                        <li><img src="" alt="" /></li>
+                    </ul>
                 </div>
             </footer>
         </div>
