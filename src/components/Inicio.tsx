@@ -80,7 +80,7 @@ function Inicio() {
                                 <p>Entre ou cadastre-se</p>
                             </li>
                             <li>
-                                <p>Meu Carrinhor</p>
+                                <p>Meu Carrinho</p>
                             </li>
                         </ul>
                     </div>
