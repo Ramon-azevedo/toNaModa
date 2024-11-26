@@ -1,25 +1,3 @@
-import { Link } from "react-router-dom";
-import "./Inicio.css";
-
-import { Swiper, SwiperSlide } from "swiper/react"
-
-
-
-function Inicio() {
-
-    const data = [
-        { id: '1', image: 'https://lets.events/blog/wp-content/uploads/2023/03/eventos-de-moda.jpg'},
-        { id: '2', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQes94kBp5FNgPUsNHHzOblE4g4on-dgTO98Q&s'},
-        { id: '3', image: 'https://st.depositphotos.com/1389715/2129/i/450/depositphotos_21297327-stock-photo-modern-and-fashion-clothes-store.jpg'},
-        { id: '4', image: 'https://images.pexels.com/photos/1488463/pexels-photo-1488463.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'}
-    ]
-
-    const data2 = [
-        { id: '1', image: 'https://images.tcdn.com.br/img/img_prod/873120/kit_2_calcas_cargo_masculina_sem_punho_escolha_as_cores_1793_1_82b11e478bec9c3d9963adea7c5b9a82.jpg'},
-        { id: '2', image: 'https://images.tcdn.com.br/img/img_prod/873120/kit_2_calcas_cargo_masculina_com_punho_escolha_as_cores_1581_1_a04b8bd0f2b58663e5297a44f60cd1dc.jpg'},
-        { id: '3', image: 'https://lojabluk.vteximg.com.br/arquivos/ids/166490-800-1000/calca-jeans-skinny-com-botoes-na-perna-azul-cj82980621-01.jpg?v=637727787998500000'},
-        { id: '4', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJXGMJV7Nz34uy7dqTW1jmmu52Yn-FYaWUqQ&s'}
-    ]
 
 
 
@@ -28,6 +6,17 @@ function Inicio() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+function Feminino() {
     return (
         <div>
             <nav>
@@ -98,69 +87,47 @@ function Inicio() {
                 </div>
                 <div className="nav4">
                     <ul>
-                        <li><Link to="/Feminino">Feminino</Link></li>
-                        <li><Link to="">Masculino</Link></li>
-                        <li><Link to="">Infantil</Link></li>
-                        <li><Link to="">Lingerie</Link></li>
-                        <li><Link to="">Jeans</Link></li>
-                        <li><Link to="">Plus Size</Link></li>
-                        <li><Link to="">Casa</Link></li>
-                        <li><Link to="">Ofertas</Link></li>
+                        <li><a href="">Feminino</a></li>
+                        <li><a href="">Masculino</a></li>
+                        <li><a href="">Infantil</a></li>
+                        <li><a href="">Lingerie</a></li>
+                        <li><a href="">Jeans</a></li>
+                        <li><a href="">Plus Size</a></li>
+                        <li><a href="">Casa</a></li>
+                        <li><a href="">Ofertas</a></li>
                     </ul>
                 </div>
             </nav>
-            <section className="section1">
-                <div className="carrosel">
-                    <Swiper
-                        slidesPerView={1}
-                        pagination={{clickable: true}}
-                        autoplay={{delay:5000}}
-                    >
-                        { data.map((item) => (
-                            <SwiperSlide key={item.id}>
-                                <img 
-                                    src={item.image}
-                                    alt="Slider"
-                                    className="imgSlider"
-                                />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </div>
-            <div className="boxImg1">
-                <ul>
-                    <li>Frete Grátis acima de R$250</li>
-                    <li>Aceitamos todos os Cartões</li>
-                    <li>Contato</li>
-                    <li>Compra segura</li>
-                </ul>
-            </div>
-            </section>
-                    
-            <section className="section2">
-                <h2>Promoções Imperdíveis!</h2>
-                
-                <div className="carrosel2">
-                    <Swiper
-                        slidesPerView={2}
-                        pagination={{clickable: true}}
-                    
-                    >
-                        {data2.map((item2) => (
-                            <SwiperSlide key={item2.id}>
-                                <img
-                                    src={item2.image}
-                                    alt="Modas"
-                                    className="ibagems"
-                                />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </div>
-            </section>
-            <section className="imgLong">
 
+
+            <section>
+                <div>
+                    <h2>Feminino</h2>
+                    <div>
+                        <ul>
+                            
+                        </ul>
+                    </div>
+                </div>
             </section>
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <footer className="fim">
                 <div className="divs">
                     <div>
@@ -203,7 +170,8 @@ function Inicio() {
                 </div>
             </footer>
         </div>
-    );
-};
+    )
+}
 
-export default Inicio;
+
+export default Feminino;
