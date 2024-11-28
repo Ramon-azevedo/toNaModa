@@ -1,0 +1,26 @@
+.section1 {
+    h2 {
+        text-align: center;
+        margin-bottom: 150px;
+    }
+}
+
+.subItens {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.itens {
+    list-style: none;
+    text-align: center;
+    li {
+        margin-bottom: 5px;
+        .img {
+            height: 300px;
+            width: 230px;
+
+        }
+    }
+}
