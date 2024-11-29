@@ -1,4 +1,4 @@
-import "./Feminino.css"
+import "../navItens.css"
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 
 
-interface Feminino01 {
+interface Ofertas01 {
     id: number;
     imagem: string;
     nome: string;
@@ -25,19 +25,19 @@ interface Feminino01 {
 
 
 
-function Feminino() {
+function Ofertas() {
 
-    const [feminino, setFeminino] = useState<Feminino01[]>([]);
+    const [ofertas, setOfertas] = useState<Ofertas01[]>([]);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         axios
-            .get("http://localhost:8080/feminino/getFeminino")
+            .get("http://localhost:8080/ofertas/getOfertas")
             .then((response) => {
-                setFeminino(response.data);
+                setOfertas(response.data);
             })
             .catch((err) => {
-                setError("Erro ao carregar a moda feminina.");
+                setError("Erro ao carregar ofertas.");
                 console.error(err);
             })
     },[]);
@@ -128,17 +128,17 @@ function Feminino() {
 
             <section className="section1">
                 <div>
-                    <h2>Feminino</h2>
+                    <h2>Ofertas</h2>
                     <div className="subItens">
                         {error ? (
                             <p>{error}</p>
                         ) : (
-                            feminino.map((fem) => (
-                            <ul key={fem.id} className="itens">
-                                <li><img src={fem.imagem} alt={fem.nome} className="img" /></li>
-                                <li>{fem.nome}</li>
-                                <li>{fem.preco}</li>
-                                <li>{fem.vezesCartao}</li>
+                            ofertas.map((ofer) => (
+                            <ul key={ofer.id} className="itens">
+                                <li><img src={ofer.imagem} alt={ofer.nome} className="img" /></li>
+                                <li>{ofer.nome}</li>
+                                <li>{ofer.preco}</li>
+                                <li>{ofer.vezesCartao}</li>
                             </ul>
                             ))
                         )}
@@ -209,4 +209,4 @@ function Feminino() {
 }
 
 
-export default Feminino;
+export default Ofertas;

@@ -1,31 +1,46 @@
-import { Link } from "react-router-dom";
-import "./Inicio.css";
-
-import { Swiper, SwiperSlide } from "swiper/react"
-
-
-
-function Inicio() {
-
-    const data = [
-        { id: '1', image: 'https://lets.events/blog/wp-content/uploads/2023/03/eventos-de-moda.jpg'},
-        { id: '2', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQes94kBp5FNgPUsNHHzOblE4g4on-dgTO98Q&s'},
-        { id: '3', image: 'https://st.depositphotos.com/1389715/2129/i/450/depositphotos_21297327-stock-photo-modern-and-fashion-clothes-store.jpg'},
-        { id: '4', image: 'https://images.pexels.com/photos/1488463/pexels-photo-1488463.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'}
-    ]
-
-    const data2 = [
-        { id: '1', image: 'https://images.tcdn.com.br/img/img_prod/873120/kit_2_calcas_cargo_masculina_sem_punho_escolha_as_cores_1793_1_82b11e478bec9c3d9963adea7c5b9a82.jpg'},
-        { id: '2', image: 'https://images.tcdn.com.br/img/img_prod/873120/kit_2_calcas_cargo_masculina_com_punho_escolha_as_cores_1581_1_a04b8bd0f2b58663e5297a44f60cd1dc.jpg'},
-        { id: '3', image: 'https://lojabluk.vteximg.com.br/arquivos/ids/166490-800-1000/calca-jeans-skinny-com-botoes-na-perna-azul-cj82980621-01.jpg?v=637727787998500000'},
-        { id: '4', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJXGMJV7Nz34uy7dqTW1jmmu52Yn-FYaWUqQ&s'}
-    ]
+import "../navItens.css"
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 
 
 
 
 
+
+interface PlusSize01 {
+    id: number;
+    imagem: string;
+    nome: string;
+    preco: string;
+    vezesCartao: string;
+}
+
+
+
+
+
+
+
+
+
+
+function PlusSize() {
+
+    const [plusSize, setPlusSize] = useState<PlusSize01[]>([]);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        axios
+            .get("http://localhost:8080/plusSize/getPlusSize")
+            .then((response) => {
+                setPlusSize(response.data);
+            })
+            .catch((err) => {
+                setError("Erro ao carregar a moda plusSize.");
+                console.error(err);
+            })
+    },[]);
 
 
     return (
@@ -98,69 +113,56 @@ function Inicio() {
                 </div>
                 <div className="nav4">
                     <ul>
-                        <li><Link to="/Feminino">Feminino</Link></li>
-                        <li><Link to="/Masculino">Masculino</Link></li>
-                        <li><Link to="/Infantil">Infantil</Link></li>
-                        <li><Link to="/Langerie">Lingerie</Link></li>
-                        <li><Link to="/Jeans">Jeans</Link></li>
-                        <li><Link to="/PlusSize">Plus Size</Link></li>
-                        <li><Link to="/Casa">Casa</Link></li>
-                        <li><Link to="/Ofertas">Ofertas</Link></li>
+                        <li><a href="">Feminino</a></li>
+                        <li><a href="">Masculino</a></li>
+                        <li><a href="">Infantil</a></li>
+                        <li><a href="">Lingerie</a></li>
+                        <li><a href="">Jeans</a></li>
+                        <li><a href="">Plus Size</a></li>
+                        <li><a href="">Casa</a></li>
+                        <li><a href="">Ofertas</a></li>
                     </ul>
                 </div>
             </nav>
-            <section className="section1">
-                <div className="carrosel">
-                    <Swiper
-                        slidesPerView={1}
-                        pagination={{clickable: true}}
-                        autoplay={{delay:5000}}
-                    >
-                        { data.map((item) => (
-                            <SwiperSlide key={item.id}>
-                                <img 
-                                    src={item.image}
-                                    alt="Slider"
-                                    className="imgSlider"
-                                />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </div>
-            <div className="boxImg1">
-                <ul>
-                    <li>Frete Grátis acima de R$250</li>
-                    <li>Aceitamos todos os Cartões</li>
-                    <li>Contato</li>
-                    <li>Compra segura</li>
-                </ul>
-            </div>
-            </section>
-                    
-            <section className="section2">
-                <h2>Promoções Imperdíveis!</h2>
-                
-                <div className="carrosel2">
-                    <Swiper
-                        slidesPerView={2}
-                        pagination={{clickable: true}}
-                    
-                    >
-                        {data2.map((item2) => (
-                            <SwiperSlide key={item2.id}>
-                                <img
-                                    src={item2.image}
-                                    alt="Modas"
-                                    className="ibagems"
-                                />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </div>
-            </section>
-            <section className="imgLong">
 
+
+            <section className="section1">
+                <div>
+                    <h2>PlusSize</h2>
+                    <div className="subItens">
+                        {error ? (
+                            <p>{error}</p>
+                        ) : (
+                            plusSize.map((plus) => (
+                            <ul key={plus.id} className="itens">
+                                <li><img src={plus.imagem} alt={plus.nome} className="img" /></li>
+                                <li>{plus.nome}</li>
+                                <li>{plus.preco}</li>
+                                <li>{plus.vezesCartao}</li>
+                            </ul>
+                            ))
+                        )}
+                    </div>
+                </div>
             </section>
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <footer className="fim">
                 <div className="divs">
                     <div>
@@ -203,7 +205,8 @@ function Inicio() {
                 </div>
             </footer>
         </div>
-    );
-};
+    )
+}
 
-export default Inicio;
+
+export default PlusSize;
