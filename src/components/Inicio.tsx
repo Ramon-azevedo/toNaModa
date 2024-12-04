@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Inicio.css";
 
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -6,6 +6,37 @@ import { Swiper, SwiperSlide } from "swiper/react"
 
 
 function Inicio() {
+
+    const navigate = useNavigate();
+
+    const handleClick1 = () => {
+        navigate("/Feminino");
+    }
+
+    const handleClick2 = () => {
+        navigate("/Masculino");
+    }
+
+    const handleClick3 = () => {
+        navigate("/Infantil");
+    }
+
+    const handleClick4 = () => {
+        navigate("/Lingerie");
+    }
+
+    const handleClick5 = () => {
+        navigate("/Jeans");
+    }
+
+    const handleClick6 = () => {
+        navigate("/PlusSize");
+    }
+
+    const handleClick8 = () => {
+        navigate("/Ofertas");
+    }
+
 
     const data = [
         { id: '1', image: 'https://lets.events/blog/wp-content/uploads/2023/03/eventos-de-moda.jpg'},
@@ -97,16 +128,17 @@ function Inicio() {
                     </div>
                 </div>
                 <div className="nav4">
-                    <ul>
-                        <li><Link to="/Feminino">Feminino</Link></li>
-                        <li><Link to="/Masculino">Masculino</Link></li>
-                        <li><Link to="/Infantil">Infantil</Link></li>
-                        <li><Link to="/Langerie">Lingerie</Link></li>
-                        <li><Link to="/Jeans">Jeans</Link></li>
-                        <li><Link to="/PlusSize">Plus Size</Link></li>
-                        <li><Link to="/Casa">Casa</Link></li>
-                        <li><Link to="/Ofertas">Ofertas</Link></li>
-                    </ul>
+                    <nav>
+                        <ul>
+                            <li><button onClick={handleClick1}>Feminino</button></li>
+                            <li><button onClick={handleClick2}>Masculino</button></li>
+                            <li><button onClick={handleClick3}>Infantil</button></li>
+                            <li><button onClick={handleClick4}>Lingerie</button></li>
+                            <li><button onClick={handleClick5}>Jeans</button></li>
+                            <li><button onClick={handleClick6}>Plus Size</button></li>
+                            <li><button onClick={handleClick8}>Ofertas</button></li>
+                        </ul>
+                    </nav>
                 </div>
             </nav>
             <section className="section1">
@@ -118,7 +150,7 @@ function Inicio() {
                     >
                         { data.map((item) => (
                             <SwiperSlide key={item.id}>
-                                <img 
+                                <img
                                     src={item.image}
                                     alt="Slider"
                                     className="imgSlider"

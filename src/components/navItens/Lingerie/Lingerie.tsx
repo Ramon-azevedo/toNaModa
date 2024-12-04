@@ -1,6 +1,7 @@
 import "../navItens.css"
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -26,6 +27,37 @@ interface Lingerie01 {
 
 
 function Lingerie() {
+
+    const navigate = useNavigate();
+
+    const handleClick1 = () => {
+        navigate("/Feminino");
+    }
+
+    const handleClick2 = () => {
+        navigate("/Masculino");
+    }
+
+    const handleClick3 = () => {
+        navigate("/Infantil");
+    }
+
+    const handleClick4 = () => {
+        navigate("/Lingerie");
+    }
+
+    const handleClick5 = () => {
+        navigate("/Jeans");
+    }
+
+    const handleClick6 = () => {
+        navigate("/PlusSize");
+    }
+
+
+    const handleClick8 = () => {
+        navigate("/Ofertas");
+    }
 
     const [lingerie, setLingerie] = useState<Lingerie01[]>([]);
     const [error, setError] = useState<string | null>(null);
@@ -112,16 +144,17 @@ function Lingerie() {
                     </div>
                 </div>
                 <div className="nav4">
-                    <ul>
-                        <li><a href="">Feminino</a></li>
-                        <li><a href="">Masculino</a></li>
-                        <li><a href="">Infantil</a></li>
-                        <li><a href="">Lingerie</a></li>
-                        <li><a href="">Jeans</a></li>
-                        <li><a href="">Plus Size</a></li>
-                        <li><a href="">Casa</a></li>
-                        <li><a href="">Ofertas</a></li>
-                    </ul>
+                    <nav>
+                        <ul>
+                            <li><button onClick={handleClick1}>Feminino</button></li>
+                            <li><button onClick={handleClick2}>Masculino</button></li>
+                            <li><button onClick={handleClick3}>Infantil</button></li>
+                            <li><button onClick={handleClick4}>Lingerie</button></li>
+                            <li><button onClick={handleClick5}>Jeans</button></li>
+                            <li><button onClick={handleClick6}>Plus Size</button></li>
+                            <li><button onClick={handleClick8}>Ofertas</button></li>
+                        </ul>
+                    </nav>
                 </div>
             </nav>
 
