@@ -1,11 +1,49 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Inicio.css";
 
 import { Swiper, SwiperSlide } from "swiper/react"
+import { useState } from "react";
+import axios from "axios";
 
-
+interface Results {
+    id: number;
+    imagem: string;
+    nome: string;
+    preco: string;
+    vezesCartao: string;
+  }
 
 function Inicio() {
+
+    const [query, setQuery] = useState<string>("");
+    const [results, setResults] = useState<Results[]>([]);
+    const [error, setError] = useState<string | null>(null);
+    const [isVisible, setVisible] = useState<boolean>(true);
+
+    const handleSearch = async () => {
+        try {
+            setResults([]);
+            setError(null);
+          const response = await axios.get("http://localhost:8080/api/identidades/pesquisa", {
+            params: { query },
+          });
+          setResults(response.data);
+        } catch (error) {
+          console.error("Erro ao buscar dados:", error);
+          setError("Erro ao carregar a pesquisa.");
+        }
+      };
+
+    const handleClick = () => {
+        setVisible(false);
+    }
+    
+
+    const handleCombineClick = (event: React.FormEvent) => {
+        event.preventDefault();
+        handleClick();
+        handleSearch();
+    }
 
     const navigate = useNavigate();
 
@@ -81,9 +119,13 @@ function Inicio() {
                             <li>
                                 <form>
                                     <div className="pesq">
-                                        <input type="text" name="" id="" />
+                                        <input type="text" name="txt1" id="txt1" 
+                                            placeholder="Digite para pesquisar..."
+                                            value={query}
+                                            onChange={(e) => setQuery(e.target.value)}  
+                                        />
                                         <span>
-                                            <button style={{ cursor: "pointer" }}>
+                                            <button style={{ cursor: "pointer" }} onClick={handleCombineClick}>
                                             <span>
                                                 <svg
                                                 width="20" /* Ajuste o tamanho conforme necessário */
@@ -116,7 +158,7 @@ function Inicio() {
                                 </form>
                             </li>
                             <li>
-                                <p><a href="">Entre ou cadastre-se</a></p>
+                                <p><Link to={"/Login"}>Entre ou cadastre-se</Link></p>
                             </li>
                             <li>
                                 <p><a href="">Meu Carrinho</a></p>
@@ -141,6 +183,7 @@ function Inicio() {
                     </nav>
                 </div>
             </nav>
+            {isVisible && (
             <section className="section1">
                 <div className="carrosel">
                     <Swiper
@@ -168,11 +211,33 @@ function Inicio() {
                 </ul>
             </div>
             </section>
-                    
+            )};
             <section className="section2">
                 <h2>Promoções Imperdíveis!</h2>
-                
-                <div className="carrosel2">
+            
+                <div>
+                    <div className="subItens">
+                        {error ? (
+                            <p>{error}</p>
+                        ) : (
+                            results.map((search) => (
+                                <ul key={search.id} className="itens">
+                                    <li>
+                                        {/* Aqui passamos o ID como parâmetro na URL */}
+                                        <Link to={`/product/${search.id}`}>
+                                            <img src={search.imagem} alt={search.nome} className="img" />
+                                        </Link>
+                                    </li>
+                                    <li>{search.nome}</li>
+                                    <li>{search.preco}</li>
+                                    <li>{search.vezesCartao}</li>
+                                </ul>
+                            ))
+                        )}
+                    </div>
+                </div>
+                {isVisible && (
+                    <div className="carrosel2">
                     <Swiper
                         slidesPerView={2}
                         pagination={{clickable: true}}
@@ -189,10 +254,13 @@ function Inicio() {
                         ))}
                     </Swiper>
                 </div>
+                )}
+                
             </section>
-            <section className="imgLong">
+            
+            {isVisible && (
+            <section className="imgLong"></section>)};
 
-            </section>
             <footer className="fim">
                 <div className="divs">
                     <div>

@@ -9,11 +9,12 @@ import Lingerie from "./components/navItens/Lingerie/Lingerie";
 import PlusSize from "./components/navItens/plusSize/PlusSize";
 import Ofertas from "./components/navItens/ofertas/Ofertas";
 import ProductCard from "./components/ProductCard";
+import Login from "./components/login/login";
 
 
 function App() {
     return (
-          <Routes>
+        <Routes>
                 <Route path="/" element={<Inicio/>} />
                 <Route path="/Feminino" element={<Feminino/>} />
                 <Route path="/Masculino" element={<Masculino/>} />
@@ -23,7 +24,8 @@ function App() {
                 <Route path="/PlusSize" element={<PlusSize/>} />
                 <Route path="/Ofertas" element={<Ofertas/>} />
                 <Route path="/product/:id" element={<ProductCard />} /> {/* Rota para ProductCard com ID dinâmico */}
-                </Routes>
+                <Route path="/Login" element={<Login/>} />
+        </Routes>
     );
 }
 
