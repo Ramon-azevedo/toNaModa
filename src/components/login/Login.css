@@ -9,15 +9,39 @@
 }
 
 .boxs {
+    
     display: flex;
     justify-content: center;
+
+    input {
+        padding: 15px;
+        width: 80%;
+        margin-bottom: 17px;
+    }
+
+    input[type="submit"] {
+        background-color: black;
+        color: white;
+        width: 92%;
+        cursor: pointer;
+    }
+
     .box1 {
         width: 300px;
+        padding: 60px;
+
+        h5 {
+            cursor: pointer;
+            font-weight: bolder;
+            padding-top: 0;
+            margin-top: 1px;
+        }
     }
     .box2 {
         width: 300px;
         border-left: 1px solid black;
         padding-left: 20px;
+        padding: 60px;
     }
 }
 
@@ -29,4 +53,18 @@
 .redes {
     text-align: center;
     margin-top: 100px;
+    font-size: 1.3em;
+    font-weight: bold;
+
+    .btnRedes {
+        button {
+            padding: 14px;
+            margin: 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+
+        }
+    }
 }

@@ -106,10 +106,10 @@ function Inicio() {
                 <div className="nav2">
                     <div className="logo1"></div>
                     <ul>
-                        <li><a href="">Meus Pedidos</a></li>
-                        <li><a href="">Nossa Loja</a></li>
-                        <li><a href="">Atendimento</a></li>
-                        <li><a href="">Cartões e Serviços</a></li>
+                        <li><Link to={""}>Meus Pedidos</Link></li>
+                        <li><Link to={""}>Nossa Loja</Link></li>
+                        <li><Link to={""}>Atendimento</Link></li>
+                        <li><Link to={""}>Cartões e Serviços</Link></li>
                     </ul>
                 </div>
                 <div className="nav3">
@@ -128,8 +128,8 @@ function Inicio() {
                                             <button style={{ cursor: "pointer" }} onClick={handleCombineClick}>
                                             <span>
                                                 <svg
-                                                width="20" /* Ajuste o tamanho conforme necessário */
-                                                height="20"
+                                                width="25" /* Ajuste o tamanho conforme necessário */
+                                                height="40"
                                                 viewBox="0 0 24 24"
                                                 fill="none"
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -282,7 +282,7 @@ function Inicio() {
                             <li><h3>ATENDIMENTO</h3></li>
                             <li><a href="mailto:email@gmail.com">email@gmail.com</a></li><br />
                             <li><h3>Fale conosco</h3>
-                                <a href="">(86) 999898-7878</a>
+                                <a href="">(86) 99989-7878</a>
                             </li>
                         </ul>
 
