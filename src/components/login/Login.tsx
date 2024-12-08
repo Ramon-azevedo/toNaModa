@@ -1,10 +1,71 @@
 
+import { useState } from "react";
 import "../Inicio.css";
 import "./Login.css";
+import axios from "axios";
 
 
 function Login() {
 
+    const [senha, setSenha] = useState("");
+    const [email, setEmail] = useState("");
+    const [error, setError] = useState("");
+
+    const [senha2, setSenha2] = useState("");
+    const [email2, setEmail2] = useState("");
+    const [error2, setError2] = useState("");
+
+    const handleLogin = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post("http://localhost:8080/auth/login", {
+                email,
+                senha,
+            });
+            const { token } = response.data;
+
+            localStorage.setItem("authToken",token);
+            console.log("Login bem-sucedido! Token: ", token);
+
+            setEmail("");
+            setSenha("");
+            setError("");
+        } catch (err: unknown) {
+            if (axios.isAxiosError(err)) {
+                setError(err.response?.data?.message || "Login falhou. Verifique suas credenciais.");
+            } else {
+                setError("Erro desconhecido. Tente novamente mais tarde.");
+            }
+            
+            console.error(err);
+        }
+    };
+
+    const handleCadastro =  async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        try {
+            const response2 = await axios.post("http://localhost:8080/auth/register", {
+                email: email2,
+                senha: senha2,
+            });
+            const { token } = response2.data;
+
+            localStorage.setItem("authToken",token);
+            console.log("Cadastro realizado com Sucesso! Token: ", token);
+
+            setEmail2("");
+            setSenha2("");
+            setError2("");
+        } catch(err: unknown) {
+            if (axios.isAxiosError(err)) {
+                setError2(err.response?.data?.message || "cadastro falhou. Tente novamente.");
+            } else {
+                setError2("Erro desconhecido. Tente novamente mais tarde.");
+            }
+        }
+    }
 
 
 
@@ -19,28 +80,42 @@ function Login() {
             <section className="section01">
                 <div className="boxs">
                     <div className="box1">
-                        <form>
+                        <form onSubmit={handleLogin}>
                             <h2>Já sou cliente</h2>
                             <input type="email" name="txtEmail" id="txtEmail" 
                                 placeholder="Digite seu Email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
                             />
                             <input type="password" name="txtSenha" id="txtSenha" 
                                 placeholder="Senha"
+                                value={senha}
+                                onChange={(e) => setSenha(e.target.value)}
+                                required
                             />
                             <h5>Esqueci minha senha</h5>
+                            {error && <p style={{color: "red"}}>{error}</p>}
                             <input type="submit" value="Acessar Conta" />
                         </form>
                     </div>
 
                     <div className="box2">
-                        <form>
+                        <form onSubmit={handleCadastro}>
                             <h2>Criar Conta</h2>
                             <input type="email" name="txtEmail2" id="txtEmail2" 
                                 placeholder="Informe seu e-mail"
+                                value={email2}
+                                onChange={(e) => setEmail2(e.target.value)}
+                                required
                             />
                             <input type="password" name="txtSenha2" id="txtSenha2" 
                                 placeholder="Criar senha"
+                                value={senha2}
+                                onChange={(e) => setSenha2(e.target.value)}
+                                required
                             />
+                            {error2 && <p style={{color: "red"}}>{error2}</p>}
                             <input type="submit" value="Criar Conta" />
                         </form>
                     </div>
